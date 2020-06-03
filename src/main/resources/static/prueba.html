@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>Prueba con Gradle y Ajax</title>
+</head>
+<body>
+<p>Entra un nombre: <input type="text" id="nombre" name="nombre" /></p>
+<button onclick="submitMe(document.getElementById('nombre').value)" id="testButton" >Submit Response</button>
+<div id="saludo"></div>
+<script>
+    function submitMe(bla){
+        <!-- var bla = $('#nombre').val(); -->
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080',
+            data: { name : bla},
+            success: function(respuesta) {
+                console.log('Salida de datos', respuesta);
+                $("#saludo").html(respuesta);
+            }
+        })
+    };
+</script>
+</body>
+</html>
